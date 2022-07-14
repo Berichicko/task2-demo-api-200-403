@@ -1,7 +1,6 @@
 package models;
 
 import io.restassured.http.ContentType;
-
 import static io.restassured.RestAssured.given;
 
 public class HomePageYandex {
@@ -15,11 +14,21 @@ public class HomePageYandex {
                 .statusCode();
     }
 
+    public int postResponseCode(String url) {
+        return given()
+                .contentType(ContentType.JSON)
+                .post("/api/users?page")
+                .then()
+                .extract()
+                .statusCode();
+    }
+
+
     public String getHeaders(String url) {
-        String s = given()
+        String headers = given()
                 .contentType(ContentType.JSON)
                 .get(url).then().extract().headers().toString();
-        return s;
+        return headers;
     }
 
     public String getStatusLine(String url) {

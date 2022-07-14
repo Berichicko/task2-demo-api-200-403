@@ -9,4 +9,10 @@ public class HomePageTest extends BaseTest{
     public void testIsResponseOK() {
         Assertions.assertEquals(Utils.codeOK, homePageYandex.getResponseCode(Utils.BASE_URL));
     }
+
+    @Test
+    //проверка, что код ответа 403
+    public void testIsResponseForbidden() {
+        Assertions.assertEquals(Utils.codeForbidden, homePageYandex.postResponseCode(Utils.BASE_URL));
+    }
 }
